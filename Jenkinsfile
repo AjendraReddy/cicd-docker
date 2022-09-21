@@ -9,17 +9,17 @@ pipeline {
         }
         stage('Dockerlogin') {
             steps {
-                sh 'aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 303760478036.dkr.ecr.us-east-1.amazonaws.com'
+                sh 'aws ecr-public get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin public.ecr.aws/m2l2s8v4'
             }
         }
         stage('Build') {
             steps {
-                sh 'sudo docker build -t 303760478036.dkr.ecr.us-east-1.amazonaws.com/static-app:$BUILD_NUMBER .'
+                sh 'sudo docker build -t latest public.ecr.aws/m2l2s8v4/cicddocker:latest'
             }
         }
         stage('Push') {
             steps {
-                sh 'sudo docker push 303760478036.dkr.ecr.us-east-1.amazonaws.com/static-app:$BUILD_NUMBER'
+                sh 'sudo docker push public.ecr.aws/m2l2s8v4/cicddocker:latest'
             }
         }
     }
