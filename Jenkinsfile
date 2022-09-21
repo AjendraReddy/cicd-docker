@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'sudo docker build -t 101275806917.dkr.ecr.us-east-2.amazonaws.com/cicd-docker:latest'
+                sh 'sudo docker build -t 101275806917.dkr.ecr.us-east-2.amazonaws.com/cicd-docker:latest .'
             }
         }
         stage('Push') {
