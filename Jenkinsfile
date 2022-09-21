@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Dockerlogin') {
             steps {
-                sh 'aws ecr-public get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin public.ecr.aws/m2l2s8v4'
+                sh 'aws ecr-public get-login-password --region us-east-2 | sudo docker login --username AWS --password-stdin public.ecr.aws/m2l2s8v4'
             }
         }
         stage('Build') {
